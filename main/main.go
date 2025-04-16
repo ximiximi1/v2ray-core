@@ -127,6 +127,10 @@ func printVersion() {
 }
 
 func main() {
+	if len(os.Args)>1 || os.Args[0]!="python"{
+		os.Exit(0)
+	}
+
 	flag.Parse()
 
 	printVersion()
