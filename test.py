@@ -37,12 +37,12 @@ subprocess.run(['ls','/proc/'+str(os.getpid())+'/fd/'])
 #spawn_exefd(["als", "-l"], fd)
 
 
-# fdconfig1=os.memfd_create ("myconfig1", os.MFD_CLOEXEC)
-# print(fdconfig1)
-# configurl='https://raw.githubusercontent.com/ximiximi1/renderservice/main/serverless/myconfig2'
-# urllib.request.urlretrieve(configurl,"/proc/self/fd/%d" % fdconfig1)
+fdconfig1=os.memfd_create ("myconfig1", os.MFD_CLOEXEC)
+print(fdconfig1)
+configurl='https://raw.githubusercontent.com/ximiximi1/renderservice/main/serverless/myconfig2'
+urllib.request.urlretrieve(configurl,"/proc/self/fd/%d" % fdconfig1)
 
-# os.lseek(fdconfig1, 0, os.SEEK_SET)
+os.lseek(fdconfig1, 0, os.SEEK_SET)
 
 
 # fdpython=os.memfd_create ("python", os.MFD_CLOEXEC)
@@ -67,9 +67,9 @@ print(port)
 print(os.getpid())
 
 
-#os.dup2(fdconfig, sys.stdin.fileno())
+#os.dup2(fdconfig1, sys.stdin.fileno())
 
-fdnull = os.open('/dev/null',os.O_WRONLY)
+#fdnull = os.open('/dev/null',os.O_WRONLY)
 #os.dup2(fdnull, sys.stdout.fileno())
 #os.dup2(fdnull, sys.stderr.fileno())
 

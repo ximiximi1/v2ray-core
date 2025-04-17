@@ -133,7 +133,7 @@ func main() {
 
 	flag.Parse()
 
-	printVersion()
+	//printVersion()
 
 	if *version {
 		return
